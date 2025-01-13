@@ -34,7 +34,7 @@ It also provides an interface for managing inventory and processing orders.
 3. Set up the database:
 4. Create a superuser for admin access:
 5. Add sample products:
-6. Run the development server:
+6. Run the development server: python manage.py runserver
 7. Access the application at `http://localhost:8000`
 
 ## File Structure
