@@ -1,0 +1,14 @@
+{% extends 'delivery/base.html' %}
+
+{% block content %}
+<div class="product-card">
+    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+    <h2>{{ product.name }}</h2>
+    <p>{{ product.description }}</p>
+    <p>Price: ${{ product.price }} per {{ product.get_unit_display }}</p>
+    <p>Supplier: {{ product.supplier.name }}</p>
+    <p>In Stock: {{ product.stock }} {{ product.get_unit_display }}s</p>
+    <a href="{% url 'order_create' %}?product={{ product.pk }}" class="btn"><i class="fas fa-shopping-cart"></i> Order Now</a>
+</div>
+{% endblock %}
+

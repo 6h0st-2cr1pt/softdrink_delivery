@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Soft Drink Delivery{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'delivery/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="{% url 'product_list' %}" class="logo">
+                <img src="{% static 'delivery/logo.png' %}" alt="Soft Drink Delivery Logo">
+                Soft Drink Delivery
+            </a>
+            <div class="nav-links">
+                <a href="{% url 'product_list' %}"><i class="fas fa-box"></i> Products</a>
+                <a href="{% url 'order_create' %}"><i class="fas fa-shopping-cart"></i> Place Order</a>
+                <a href="{% url 'order_list' %}"><i class="fas fa-list"></i> Orders</a>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main><br><br><br>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Soft Drink Delivery. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
