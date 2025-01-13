@@ -38,6 +38,14 @@ class Command(BaseCommand):
                 'stock': 100,
                 'unit': 'CASE',
                 'image': 'dr-pepper.jpg'
+            },
+            {
+                'name': 'Mountain Dew',
+                'description': 'Citrus-flavored energy boost',
+                'price': 1.99,
+                'stock': 100,
+                'unit': 'CASE',
+                'image': 'mountain-dew.jpg'
             }
         ]
 
