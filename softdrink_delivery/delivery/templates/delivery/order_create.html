@@ -13,14 +13,30 @@
             <h3>{{ product.name }}</h3>
             <p>${{ product.price }} per {{ product.get_unit_display }}</p>
             <label>
-                <input type="checkbox" name="items" value="{{ product.pk }},1">
+                <input type="checkbox" name="items" value="{{ product.pk }},0" data-product-id="{{ product.pk }}">
                 Add to Order
             </label>
-            <input type="number" name="quantity_{{ product.pk }}" value="1" min="1">
+            <input type="number" name="quantity_{{ product.pk }}" value="1" min="1" class="product-quantity" data-product-id="{{ product.pk }}">
         </div>
         {% endfor %}
     </div>
     <button type="submit" class="btn"><i class="fas fa-check"></i> Place Order</button>
 </form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function(e) {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"][name="items"]');
+        checkboxes.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                const productId = checkbox.dataset.productId;
+                const quantity = document.querySelector(`.product-quantity[data-product-id="${productId}"]`).value;
+                checkbox.value = `${productId},${quantity}`;
+            }
+        });
+    });
+});
+</script>
 {% endblock %}
 

@@ -26,8 +26,9 @@ class OrderCreateView(CreateView):
         for item in self.request.POST.getlist('items'):
             product_id, quantity = item.split(',')
             product = Product.objects.get(id=product_id)
-            OrderItem.objects.create(order=order, product=product, quantity=int(quantity), unit=product.unit)
-            order.total_amount += product.price * int(quantity)
+            quantity = int(quantity)  # Ensure quantity is an integer
+            OrderItem.objects.create(order=order, product=product, quantity=quantity, unit=product.unit)
+            order.total_amount += product.price * quantity
 
         order.save()
         return redirect('order_confirmation', pk=order.pk)
